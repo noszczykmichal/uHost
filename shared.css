@@ -13,7 +13,7 @@ body{
     left: 0;
     width: 100%;
     background-color: #2ddf5c;
-    padding: 8px 16px;
+    padding: 4px 16px;
     display: flex;
     justify-content: space-between;
     z-index: 1;
@@ -24,11 +24,16 @@ body{
     color: #0e4f1f;
     font-weight: 700; 
     font-size: 22px;
+    display: inline-block;
+    height: 34px;
+}
+
+.main-header__logo img{
+    height: 100%;
 }
 
 .main-header div,.main-nav{
     display: inline-block;
-   
 }
 
 .main-nav{

@@ -2,7 +2,8 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background-image: url("../img/plans-background.jpg");
+    background: url("../img/plans-background.jpg") center/cover;
+    filter: grayscale(50%);
     z-index: -1;
 }
 

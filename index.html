@@ -15,8 +15,13 @@
 </head>
 
 <body>
-    <div class="backdrop">
-        <div class="backbtn"></div>
+    <div class="backdrop"></div>
+    <div class="modal">
+        <h1 class="modal__title">Do you want to continue?</h1>
+        <div class="modal__actions">
+            <a href="start-hosting/index.html" class="modal__action">Yes!</a>
+            <button class="modal__action modal__action--negative" type="button">No!</button>
+        </div>
     </div>
     <header class="main-header">
         <div class="container">
@@ -56,7 +61,7 @@
                         <li class="plan__feature">Basic Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button btn1">CHOOSE PLAN</button>
                     </div>
                 </article>
                 <article class="plan plan--highlighted">
@@ -71,7 +76,7 @@
                         <li class="plan__feature">Plus Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button btn2">CHOOSE PLAN</button>
                     </div>
                 </article>
                 <article class="plan">
@@ -85,7 +90,7 @@
                         <li class="plan__feature">Priority Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button btn3">CHOOSE PLAN</button>
                     </div>
                 </article>
             </div>
@@ -305,6 +310,7 @@
             </ul>
         </nav>
     </footer>
+    <script src="shared.js"></script>
 </body>
 
 </html>

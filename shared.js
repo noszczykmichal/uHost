@@ -10,18 +10,24 @@ for(let btn of selectPlanButtons ){
     btn.addEventListener('click', function(){
    
         backdrop.classList.add('active');
-        modal.classList.add('active');
+        modal.classList.add('active')
     });
 };
 
 function closeModal(){
     backdrop.classList.remove('active');
-    modal.classList.remove('active');
     mobileNav.classList.remove('active');
+    //on cases where we don't have a modal on the page
+    if(modal){
+        modal.classList.remove('active')
+    };
 };
 
 backdrop.addEventListener('click', closeModal);
-modalNoButton.addEventListener('click', closeModal);
+//on cases where we don't have a modal on the page
+if(modalNoButton){
+    modalNoButton.addEventListener('click', closeModal);
+}
 
 toggleButton.addEventListener('click', function(){
     mobileNav.classList.add('active');

@@ -7,10 +7,69 @@ body{
     font-family: 'Montserrat', sans-serif;    
 }
 
+/* Modal Styles */
+
+.modal-container{
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    z-index: 200;
+    top: 20%;
+    width: 80%;
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal__title {
+    text-align: center;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .modal__actions {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .modal__action {
+    border: 1px solid #0e4f1f;
+    background: #0e4f1f;
+    text-decoration: none;
+    color: white;
+    font: inherit;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .modal__action:hover,
+  .modal__action:active {
+    background: #2ddf5c;
+    border-color: #2ddf5c;
+  }
+  
+  .modal__action--negative {
+    background: red;
+    border-color: red;
+  }
+  
+  .modal__action--negative:hover,
+  .modal__action--negative:active {
+    background: #ff5454;
+    border-color: #ff5454;
+  }
+
 #product-overview{
     background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), url("img/freedom.jpg") left 10% bottom 80%/cover no-repeat border-box, #ff1b68;
     width: 100%;
     height: 33vh;
+    min-height: 15rem;
     margin-top: 2.75rem;
     position: relative;
 }
@@ -58,6 +117,8 @@ body{
     padding: 0.5rem;
     box-shadow: 2px 2px 2px 2px rgba(0, 0 ,0, 0.5);
     border-radius: 8px;
+    max-width: 240px;
+    margin: 0 auto;
 }
 
 .plan__title{
@@ -131,65 +192,10 @@ body{
     font-size: 1.25em;
 }
 
-/* Modal Styles */
-
-.modal {
-    position: fixed;
-    display: none;
-    z-index: 200;
-    top: 20%;
-    left: 10%;
-    width: 80%;
-    background: white;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal__title {
-    text-align: center;
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-  }
-  
-  .modal__actions {
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-  }
-  
-  .modal__action {
-    border: 1px solid #0e4f1f;
-    background: #0e4f1f;
-    text-decoration: none;
-    color: white;
-    font: inherit;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .modal__action:hover,
-  .modal__action:active {
-    background: #2ddf5c;
-    border-color: #2ddf5c;
-  }
-  
-  .modal__action--negative {
-    background: red;
-    border-color: red;
-  }
-  
-  .modal__action--negative:hover,
-  .modal__action--negative:active {
-    background: #ff5454;
-    border-color: #ff5454;
-  }
-
 
   /* media querries*/
 @media(min-width: 481px){
     .modal {
-        left: 20%;
         width: 60%;
     }
 
@@ -215,12 +221,20 @@ body{
 }
 
 @media(min-width: 769px){
+
+    .modal {
+        top: 20%;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
     #product-overview {
         background-position: left 10% bottom 75%;
     }
 
     .plan{
         width: 30%;
+        max-width: 330px;
     }
 
     .plan--highlighted{
@@ -229,6 +243,7 @@ body{
 
     .key-feature{
         width: 33%;
+        max-width: 330px;
     }
 }
 

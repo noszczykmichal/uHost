@@ -133,6 +133,13 @@ body{
     outline: none;
 }
 
+.button[disabled]{
+    cursor: not-allowed;
+    border: #a1a1a1;
+    background: #ccc;
+    color:#a1a1a1;
+}
+
 .main-footer{
     background-color: #000;
     margin-top: 3rem;
@@ -211,11 +218,10 @@ body{
     }
 
     .main-footer__links{
-        width: 50%;
         margin: 0 auto;
     }
 
     .main-footer__link{
-        width: 40%;
+        width: 30%;
     }
 }

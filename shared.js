@@ -38,38 +38,61 @@ toggleButton.addEventListener('click', function(){
 
 const signupForm=document.querySelector('.signup-form');
 const selectSignupForm=document.querySelector('select');
-const inputsSignupForm=document.querySelectorAll('input');
+//checkbox has to be dealt with seperately because when checked together with other inputs it causes issues. The text inputs when checked with method 'checked' always return value 'false' even if filled-in.
+const inputsSignupForm=document.querySelectorAll('input:not([type="checkbox"])');
 const checkboxSignupForm=document.querySelector('input[type="checkbox"]');
+const btnSignupForm=document.querySelector('button[type="submit"]');
+let allFilledIn=true;
 
+// Event listener on submiting the form
 signupForm.addEventListener('submit', function(event){
+    //checking if inputs where user can type-in text are filled in
     for(let input of inputsSignupForm){
-        //if any input is empty add class invalid
-        if(!input.value.trim()){
-            event.preventDefault();
-            input.value=""; //set incorrect value(whitespaces) to an empty string
-            input.classList.add('invalid');
-        }
-        //if e.g. on the second check they are filled in, remove class invalid 
-        if(input.value.trim()){
-            input.classList.remove('invalid');
+
+        if(input.value.trim()===""){// if input value is empty string
+            event.preventDefault();//preventing submit event
+            input.value="";//setting input's value to an empty string
+            input.classList.add('invalid');//adding class 'invalid'
+            allFilledIn=allFilledIn && false //setting this to false to disable submit button 
         }
     }
 
-    // the same for select and checkbox
-    if(selectSignupForm.value==='null'){
+    if(selectSignupForm.value==='null'){ //the same for select
         event.preventDefault();
         selectSignupForm.classList.add('invalid');
-    }
-    if(!checkboxSignupForm.checked){
-        event.preventDefault();
-        checkboxSignupForm.classList.add('invalid');
+        allFilledIn=allFilledIn && false;
     }
 
-    //removing class invalid for select and checkbox
-    if(selectSignupForm.value!=='null'){
-        selectSignupForm.classList.remove('invalid');
-    }
-    if(checkboxSignupForm.checked){
+    if(!checkboxSignupForm.checked){ //and checkbox
+        event.preventDefault();
         checkboxSignupForm.classList.add('invalid');
+        allFilledIn=allFilledIn && false;
     }
+
+    if(!allFilledIn){// if current value of variable is false, button is disabled
+        btnSignupForm.setAttribute('disabled', 'true');
+    }
+})
+
+//adding onchange event to all inputs to remove class invalid user goes through previously unfilled inputs/select/checkbox
+for(let input of inputsSignupForm){
+
+    input.addEventListener('change', function(){
+        input.classList.remove('invalid');
+    })
+}
+
+selectSignupForm.addEventListener('change', function(){
+    selectSignupForm.classList.remove('invalid');
+})
+
+checkboxSignupForm.addEventListener('change', function(){
+    checkboxSignupForm.classList.remove('invalid');
+})
+
+//enabling the submit button when change in the form is registered
+
+signupForm.addEventListener('change', function(){
+    allFilledIn=true;
+    btnSignupForm.removeAttribute('disabled');
 })

@@ -44,16 +44,16 @@ const checkboxSignupForm=document.querySelector('input[type="checkbox"]');
 const btnSignupForm=document.querySelector('button[type="submit"]');
 let allFilledIn=true;
 
-// Event listener on submiting the form
+// Event listener on submitting the form
 signupForm.addEventListener('submit', function(event){
     //checking if inputs where user can type-in text are filled in
     for(let input of inputsSignupForm){
 
-        if(input.value.trim()===""){// if input value is empty string
-            event.preventDefault();//preventing submit event
+        if(input.value.trim()===""){// if value of input is an empty string
+            event.preventDefault();//preventing the submit event
             input.value="";//setting input's value to an empty string
             input.classList.add('invalid');//adding class 'invalid'
-            allFilledIn=allFilledIn && false //setting this to false to disable submit button 
+            allFilledIn=allFilledIn && false; //setting this to false to disable the submit button 
         }
     }
 
@@ -69,12 +69,12 @@ signupForm.addEventListener('submit', function(event){
         allFilledIn=allFilledIn && false;
     }
 
-    if(!allFilledIn){// if current value of variable is false, button is disabled
+    if(!allFilledIn){// if current value of variable is false, the button is disabled
         btnSignupForm.setAttribute('disabled', 'true');
     }
 })
 
-//adding onchange event to all inputs to remove class invalid user goes through previously unfilled inputs/select/checkbox
+//adding the onchange event to all inputs to remove class 'invalid' when the user goes through previously unfilled inputs/select/checkbox
 for(let input of inputsSignupForm){
 
     input.addEventListener('change', function(){
@@ -90,7 +90,7 @@ checkboxSignupForm.addEventListener('change', function(){
     checkboxSignupForm.classList.remove('invalid');
 })
 
-//enabling the submit button when change in the form is registered
+//enabling the submit button when change in the form is registered (presumably the user fills in unfilled inputs in the form)-because button is enabled, the form can be validated once more.
 
 signupForm.addEventListener('change', function(){
     allFilledIn=true;

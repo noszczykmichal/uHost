@@ -16,7 +16,7 @@ main{
 }
 
 .signup-form label{
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .signup-form label:not([for="agree-terms"]),

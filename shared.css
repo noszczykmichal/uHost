@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap');
+
 *{
     box-sizing: border-box;
 }
@@ -89,7 +91,7 @@ body{
 .mobile-nav__item a{
     text-decoration: none;
     color: #0e4f1f;
-    font-weight: 900;
+    font-weight: 700;
     padding: 0.2rem 0;
 }
 
@@ -202,8 +204,8 @@ body{
     display: unset !important;
   }
 
+  
 /* Media Queries */
-
 @media(min-width: 481px){
     .toggle-button{
         display: none;

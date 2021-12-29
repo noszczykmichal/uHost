@@ -15,7 +15,8 @@ body{
 
 .modal {
     position: fixed;
-    display: none;
+    opacity: 0;
+    transform: translateY(-3rem);
     z-index: 200;
     top: 20%;
     width: 80%;
@@ -23,6 +24,7 @@ body{
     padding: 1rem;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.2s ease-out, transform 0.5s ease-out;
   }
   
   .modal__title {

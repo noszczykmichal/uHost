@@ -41,6 +41,9 @@ main{
     color: #fff;
     background-color: #ff5454;
     padding: 0.5rem;
+    transform: rotate(45deg) translate(5rem, -4rem);
+    width: 17rem;
+    text-align: center;
 }
 
 .package__subtitle{
@@ -61,6 +64,7 @@ main{
 
 #plus{
     background-color: rgba(213,225,220,0.95);
+    overflow: hidden;
 }
 
 #free{

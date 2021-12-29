@@ -9,17 +9,26 @@ for (let btn of selectPlanButtons) {
 
     btn.addEventListener('click', function () {
 
-        backdrop.classList.add('active');
-        modal.classList.add('active')
+        backdrop.style.display="block"; //first change from display 'none' to 'block'
+        //so that later it can be hidden for a momement with opacity '0'-> opacity can be watched by transition
+        setTimeout(function(){// class 'active' added inside setTimeout so that display 'block' can take effect; without that animation of the backdrop wouldn't be possible
+            backdrop.classList.add('active');
+        }, 10)
+        modal.classList.add('active');
     });
 };
+
 
 function closeModal() {
     backdrop.classList.remove('active');
     mobileNav.classList.remove('active');
+    setTimeout(function(){
+        backdrop.style.display='none';
+    }, 200)
     //on cases where we don't have a modal on the page
     if (modal) {
-        modal.classList.remove('active')
+        modal.style.display='block';//setting modal to display 'block' with opacity '0' so later it can be animated with transition 
+        modal.classList.remove('active');
     };
 };
 
@@ -31,7 +40,11 @@ if (modalNoButton) {
 
 toggleButton.addEventListener('click', function () {
     mobileNav.classList.add('active');
-    backdrop.classList.add('active');
+    backdrop.style.display='block'//change in display so that animating backdrop will be possible
+    setTimeout(function(){
+        backdrop.classList.add('active');
+    },10)
+    modal.style.display='none';//issue fix so that a user can close the mobilenav (accidently he/she could click modal that is not visible)
 })
 
 // The start-hosting page -form validation

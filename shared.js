@@ -39,6 +39,7 @@ if (modalNoButton) {
 }
 
 toggleButton.addEventListener('click', function () {
+    mobileNav.style.display='block';
     mobileNav.classList.add('active');
     backdrop.style.display='block'//change in display so that animating backdrop will be possible
     setTimeout(function(){
@@ -57,50 +58,52 @@ const checkboxSignupForm = document.querySelector('input[type="checkbox"]');
 const btnSignupForm = document.querySelector('button[type="submit"]');
 let allFilledIn = true;
 
-function elementInvalid(element, event) {
-    event.preventDefault();//preventing the submit event
-    element.classList.add('invalid');//adding class 'invalid'
-    allFilledIn = allFilledIn && false; //setting this to false to disable the submit button
-}
-
-// Event listener on submitting the form
-signupForm.addEventListener('submit', function (event) {
-
-    //checking if inputs where user can type-in text are filled in
-    for (let input of inputsSignupForm) {
-
-        if (input.value.trim() === "") {// if value of input is an empty string
-            elementInvalid(input, event) //check what happens next in function body
-            input.value = "";//setting input's value to an empty string
+if(signupForm){
+    function elementInvalid(element, event) {
+        event.preventDefault();//preventing the submit event
+        element.classList.add('invalid');//adding class 'invalid'
+        allFilledIn = allFilledIn && false; //setting this to false to disable the submit button
+    }
+    
+    // Event listener on submitting the form
+    signupForm.addEventListener('submit', function (event) {
+    
+        //checking if inputs where user can type-in text are filled in
+        for (let input of inputsSignupForm) {
+    
+            if (input.value.trim() === "") {// if value of input is an empty string
+                elementInvalid(input, event) //check what happens next in function body
+                input.value = "";//setting input's value to an empty string
+            }
         }
+    
+        if (selectSignupForm.value === 'null') { //the same for select
+            elementInvalid(selectSignupForm, event);
+        }
+    
+        if (!checkboxSignupForm.checked) { //and checkbox
+            elementInvalid(checkboxSignupForm, event);
+        }
+    
+        if (!allFilledIn) {// if current value of variable is false, the button is disabled
+            btnSignupForm.setAttribute('disabled', 'true');
+        }
+    })
+    
+    function addEventRemoveClass(element) {
+        element.addEventListener('change', function () {//adding the onchange event to all inputs to remove class 'invalid' when the user goes through previously unfilled inputs/select/checkbox
+            element.classList.remove('invalid');
+        })
     }
-
-    if (selectSignupForm.value === 'null') { //the same for select
-        elementInvalid(selectSignupForm, event);
-    }
-
-    if (!checkboxSignupForm.checked) { //and checkbox
-        elementInvalid(checkboxSignupForm, event);
-    }
-
-    if (!allFilledIn) {// if current value of variable is false, the button is disabled
-        btnSignupForm.setAttribute('disabled', 'true');
-    }
-})
-
-function addEventRemoveClass(element) {
-    element.addEventListener('change', function () {//adding the onchange event to all inputs to remove class 'invalid' when the user goes through previously unfilled inputs/select/checkbox
-        element.classList.remove('invalid');
+    
+    for (let input of inputsSignupForm) { addEventRemoveClass(input); }
+    
+    addEventRemoveClass(selectSignupForm);//the same for select
+    addEventRemoveClass(checkboxSignupForm);//and checkbox
+    
+    //enabling the submit button when change in the form is registered (presumably the user fills in unfilled inputs in the form)-because button is enabled, the form can be validated once more.
+    signupForm.addEventListener('change', function (){
+        allFilledIn = true;
+        btnSignupForm.removeAttribute('disabled');
     })
 }
-
-for (let input of inputsSignupForm) { addEventRemoveClass(input); }
-
-addEventRemoveClass(selectSignupForm)//the same for select
-addEventRemoveClass(checkboxSignupForm)//and checkbox
-
-//enabling the submit button when change in the form is registered (presumably the user fills in unfilled inputs in the form)-because button is enabled, the form can be validated once more.
-signupForm.addEventListener('change', function () {
-    allFilledIn = true;
-    btnSignupForm.removeAttribute('disabled');
-})

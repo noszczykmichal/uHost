@@ -23,6 +23,7 @@ main{
 .package:hover{
     border-color: #ff5454;
     box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+    animation: pushUp 1s ease-out forwards;
 }
 
 .package__description{
@@ -107,3 +108,15 @@ main{
         border-color: #ff5454;
     }
   }
+
+  @keyframes pushUp{
+    0%{
+        transform: translateY(0);
+    }
+    33%{
+        transform: translateY(-1.5rem);
+    }
+    100%{
+        transform: translateY(-1rem);
+    }
+}

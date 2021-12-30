@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&display=swap');
 
+:root{
+    --dark-green: #0e4f1f;
+    --highlight-color: #ff1b68;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -65,7 +70,7 @@ body{
 
 .main-header__logo{
     text-decoration: none;
-    color: #0e4f1f;
+    color: var(--dark-green);
     font-weight: 700; 
 }
 
@@ -97,7 +102,7 @@ body{
 .main-nav__item a,
 .mobile-nav__item a{
     text-decoration: none;
-    color: #0e4f1f;
+    color: var(--dark-green);
     font-weight: 700;
     padding: 0.2rem 0;
 }
@@ -110,23 +115,23 @@ body{
 .main-nav__item--cta a,
 .mobile-nav__item--cta a{
     color: #fff;
-    background-color: #ff1b68;
+    background-color: var(--highlight-color);
     padding: 0.5rem 1rem;
     border-radius: 8px;
 }
 
 .main-nav__item--cta a:hover,
 .mobile-nav__item--cta a:hover{
-    color: #ff1b68;
+    color: var(--highlight-color);
     background-color: #fff;
     border: none;
 }
 
 .button{
-    background-color: #0e4f1f;
+    background-color: var(--dark-green);
     color: #fff;
     font: inherit;
-    border: 1.5px solid #0e4f1f; 
+    border: 1.5px solid var(--dark-green); 
     padding: 0.5rem;
     border-radius: 8px;
     font-weight: 700;
@@ -134,7 +139,7 @@ body{
 
 .button:hover{
     cursor: pointer;
-    color:#0e4f1f;
+    color: var(--dark-green);
     background-color: #fff;
 }
 

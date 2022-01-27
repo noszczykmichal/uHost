@@ -45,7 +45,9 @@ toggleButton.addEventListener('click', function () {
     setTimeout(function(){
         backdrop.classList.add('active');
     },10)
-    modal.style.display='none';//issue fix so that a user can close the mobilenav (accidently he/she could click modal that is not visible)
+    if(modal){
+        modal.style.display='none'; //issue fix so that a user can close the mobilenav (accidently he/she could click modal that is not visible)
+    }
 })
 
 // The start-hosting page -form validation
